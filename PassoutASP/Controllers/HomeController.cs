@@ -23,6 +23,16 @@ namespace PassoutASP.Controllers
             return View();
         }
 
+        public IActionResult Menu()
+        {
+            return View();
+        }
+
+        public IActionResult ManagerLogin()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
