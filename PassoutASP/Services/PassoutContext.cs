@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Common;
 using Microsoft.EntityFrameworkCore;
+using PassoutASP.Models;
 
 namespace PassoutASP.Services
 {
@@ -11,6 +12,9 @@ namespace PassoutASP.Services
         // dotnet ef database update
 
         // public virtual DbSet<ObjectClass> Object { get; set; }
+
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Employe> Employes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -25,6 +29,8 @@ namespace PassoutASP.Services
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<User>().ToTable("Users");
+            modelBuilder.Entity<Employe>().ToTable("Employes");
             // modelBuilder.Entity<ObjectClass>().ToTable("TableName");
         }
     }
