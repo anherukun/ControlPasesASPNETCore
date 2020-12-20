@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Inicia sesion";
+}
+
+<div class="row" style="margin-top:56px;">
+    <div class="offset-sm-4 col-sm-4 rounded" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3); padding: 32px;">
+        <h3>@ViewData["Title"]</h3>
+
+        <div style="">
+            @using (Html.BeginForm("", "", FormMethod.Post, new { id = "loginform", name = "loginform" }))
+            {
+                <div class="form-group">
+                    <label>Usuario</label>
+                    <input class="form-control" type="number" id="user" name="user" placeholder="999999" required />
+                </div>
+
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input class="form-control" type="password" id="password" name="password" placeholder="********" required />
+                </div>
+
+                <input class="form-control btn-primary" type="submit" value="Iniciar sesion" />
+            }
+        </div>
+    </div>
+</div>

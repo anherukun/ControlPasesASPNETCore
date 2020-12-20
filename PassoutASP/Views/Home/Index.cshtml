@@ -3,6 +3,30 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Bienvenido</h1>
+</div>
+
+<div class="row">
+    <div class="col-sm-4 card rounded" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3); padding: 8px; margin:24px;">
+        <div class="card-body">
+            <h5 class="card-title">Crea tus pases</h5>
+            <p class="card-text">¿Quieres crear pases de salida, material o medicos?</p>
+        </div>
+        <div class="card-body">
+            <div style="text-align:right;">
+                <a class="btn btn-primary" href="#">Haz clic aqui</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm card rounded" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3); padding: 8px; margin:24px;">
+        <div class="card-body">
+            <h5 class="card-title">Consola avanzada</h5>
+            <p class="card-text">¿Eres un trabajador de casetas y portadas? o ¿Quieres administrar y autorizar las salidas de tu area?</p>
+        </div>
+        <div class="card-body">
+            <div style="text-align:right;">
+                <a class="btn btn-primary" href="@Url.Action("Login", "Home")">Haz clic aqui</a>
+            </div>
+        </div>
+    </div>
 </div>

@@ -11,7 +11,7 @@ namespace PassoutASP.Models
 
         [Required] public int EmployeId { get; set; }
 
-        [Required] public SecureString Password { get; set; }
+        public SecureString Password { get; set; }
 
         [Required] public string FirstName { get; set; }
 
@@ -20,6 +20,8 @@ namespace PassoutASP.Models
         [Required] public string Rol { get; set; }
 
         public string LoginToken { get; set; }
+
+        public DateTime LastLogin { get; set; }
 
         public bool RequirePasswordChange { get; set; }
     }
