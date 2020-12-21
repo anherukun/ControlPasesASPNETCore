@@ -6,6 +6,75 @@
     <title>@ViewData["Title"] - PassoutASP</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <style>
+        #snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            text-align: center;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            top: 30px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+        }
+
+        #snackbar.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @@-webkit-keyframes fadein {
+            from {top: 0; opacity: 0;}
+            to {top: 30px; opacity: 1;}
+        }
+
+        @@keyframes fadein {
+            from {top: 0; opacity: 0;}
+            to {top: 30px; opacity: 1;}
+        }
+
+        @@-webkit-keyframes fadeout {
+            from {top: 30px; opacity: 1;}
+            to {top: 0; opacity: 0;}
+        }
+
+        @@keyframes fadeout {
+            from {top: 30px; opacity: 1;}
+            to {top: 0; opacity: 0;}
+        }
+    </style>
+
+    <script type="text/javascript">
+        function showSnackbar(message) {
+            var snack = document.getElementById("snackbar");
+            snack.className = snack.className + " show";
+            setTimeout(function () {
+                snack.className = snack.className.replace(" show", "");
+            }, 3000);
+
+            document.getElementById("snackbar-text").innerHTML = message;
+        }
+
+        function retriveResponse() {
+            var response = @Html.Raw(Json.Serialize(ViewData["response"]));
+
+            switch (response.Type) {
+                case "@ResponseType.ERROR":
+                    showSnackbar("Error: " + response.Message);
+                    break;
+
+                case "@ResponseType.SUCCESS":
+                    showSnackbar(response.Message);
+                    break;
+                default:
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -29,6 +98,9 @@
             </div>
         </nav>
     </header>
+
+    <div class="rounded" id="snackbar"><p id="snackbar-text" style="margin-bottom: 0; filter: invert(100%); -webkit-filter: invert(100%);">Aqui va un mensaje</p></div>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
